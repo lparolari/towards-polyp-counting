@@ -1,0 +1,20 @@
+{
+    "exclude": [
+        "**/__pycache__/**",
+        "**/.pytest_cache/**",
+        "**/*.pyc",
+        "**/*.pyo",
+        "**/*.egg-info/**",
+        "**/.vscode/**",
+        "**/.git/**",
+        "**/.venv/**",
+        "**/venv/**",
+        "**/env/**",
+        "**/.mypy_cache/**",
+        "**/.pytest_cache/**",
+        "**/output/**",
+        "**/data/**",
+        "**/lightning_logs/**",
+        "**/wandb_logs/**",
+    ]
+}

@@ -1,0 +1,189 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "detection/rtdetr",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "program": "main.py",
+            "args": [
+                "--settings_files",
+                "polypsense/zoo/rtdetr/config/rtdetr_rn18.yml",
+                "polypsense/zoo/rtdetr/config/dataset/ucd.yml",
+                "polypsense/zoo/rtdetr/config/run/test.yml"
+            ],
+            "env": {
+                "WANDB_MODE": "offline",
+            },
+            "justMyCode": false,
+        },
+        {
+            "name": "tracker",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "reid.track",
+            "args": [],
+            "env": {},
+            "justMyCode": false,
+        },
+        {
+            "name": "sfe",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "polypsense.sfe.cli",
+            "args": [
+                "--dataset_name=realcolon",
+                // "--dataset_root=data",
+                "--dataset_root=data/real-colon/splits/real_colon_dataset_coco_fmt_001_001_train_val_test",
+                "--num_workers=12",
+                "--batch_size=64",
+                "--im_size=128",
+                // "--backbone_weights=IMAGENET1K_V2",
+                "--lr=0.0003",
+                // "--exp_name=cifar10-001"
+                "--max_epochs=10",
+                "--exp_name=realcolon",
+                "--contrastive_strategy=temporal",
+                "--view_generator=gaussian",
+                "--view_generator_gaussian_std=30",
+            ],
+            "env": {
+                "WANDB_MODE": "offline",
+            },
+            "justMyCode": false,
+        },
+        {
+            "name": "sfe:eval",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "polypsense.sfe.cli_eval",
+            "args": [
+                "--dataset_name=realcolon",
+                "--dataset_root=data/real-colon/splits/real_colon_dataset_coco_fmt_001_001_train_val_test",
+                "--num_workers=12",
+                "--test_batch_size=64",
+                "--im_size=232",
+                "--contrastive_strategy=temporal",
+                "--view_generator=gaussian",
+                "--view_generator_gaussian_std=30",
+                "--exp_name=eval test",
+                // "--ckpt_path=/home/lparolar/Projects/polypsense/wandb_logs/simclr/58gmf073/checkpoints/epoch=94-step=9120-val_acc_top1=54.71.ckpt"
+                // "--ckpt_path=/home/lparolar/Projects/polypsense/wandb_logs/simclr/7bxf5lms/checkpoints/epoch=94-step=9120-val_acc_top1=2.84.ckpt"
+                "--ckpt_path=/home/lparolar/Projects/polypsense/wandb_logs/simclr/ot33bqjt/checkpoints/epoch=87-step=8448-val_acc_top1=48.03.ckpt"
+            ],
+            "env": {
+                "WANDB_MODE": "offline",
+            },
+            "justMyCode": false,
+        },
+        {
+            "name": "retrieval/rtdetr",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "polypsense.reid2.retrieval",
+            "args": [
+                "--data_path=data/real-colon/raw",
+                "--model_type=rtdetr",
+                "--ckpt_path=/home/lparolar/Projects/polypsense-ckpt/r201.ckpt",
+            ],
+            "env": {
+                "WANDB_MODE": "offline",
+            },
+        },
+        {
+            "name": "retrieval/simclr",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "polypsense.reid2.retrieval",
+            "args": [
+                "--data_path=data/real-colon/raw",
+                "--model_type=simclr",
+                "--ckpt_path=/home/lparolar/Projects/polypsense/wandb_logs/simclr/oex79j1n/checkpoints/epoch=8-step=28980-val_acc_top1=59.83.ckpt",
+            ],
+            "env": {
+                "WANDB_MODE": "offline",
+            },
+        },
+        {
+            "name": "fr/simclr",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "polypsense.reid2.fr",
+            "args": [
+                "--data_path=data/real-colon/raw",
+                "--output_path=tmp",
+                "--encoder_type=simclr",
+                "--encoder_ckpt=/home/lparolar/Projects/polypsense/wandb_logs/simclr/oex79j1n/checkpoints/epoch=8-step=28980-val_acc_top1=59.83.ckpt",
+                "--clustering_type=temporal",
+                "--tracklet_aggregation_method=mean",
+                // "--clustering_hparams={\"threshold\": 0.07070706784725189}",
+                // "--clustering_hparams={\"threshold\": 0.27272728085517883}",
+                "--video_names",
+                "001-001",
+                // "001-003",
+                // "--clustering_hparams=None"
+            ],
+            "env": {
+                "WANDB_MODE": "offline",
+            },
+        },
+        {
+            "name": "fr/mve",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "polypsense.reid2.fr",
+            "args": [
+                "--data_path=data/real-colon/raw",
+                "--output_path=tmp",
+                "--encoder_type=mve",
+                "--encoder_ckpt=/home/lparolar/Projects/polypsense-ckpt/mve101_14dxygkv_epoch=1-step=5784-val_acc_top1=50.16.ckpt",
+                "--clustering_type=affinity_propagation",
+                "--dilation=4",
+                "--video_names",
+                "001-001",
+                // "--clustering_hparams=None"
+            ],
+            "env": {
+                "WANDB_MODE": "offline",
+            },
+        },
+        {
+            "name": "mve",
+            "type": "debugpy",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "polypsense.mve.cli",
+            "args": [
+                "--dataset_root=data/real-colon/splits/real_colon_dataset_coco_fmt_001_001_train_val_test",
+                "--num_workers=12",
+                "--batch_size=3",
+                "--im_size=232",
+                "--max_epochs=10",
+                "--exp_name=tmp",
+                "--lr=0.0001",
+                "--s=8",
+                "--train_ratio=0.1",
+                "--sfe_ckpt=/home/lparolar/Projects/polypsense/wandb_logs/simclr/oex79j1n/checkpoints/epoch=8-step=28980-val_acc_top1=59.83.ckpt",
+                "--alpha_scheduler=epoch",
+                "--alpha_max_epochs=5",
+                "--alpha_initial_value=0.8",
+                "--alpha_min_value=0.4",
+            ],
+            "env": {
+                // "WANDB_MODE": "offline",
+            },
+            "justMyCode": false,
+        },
+    ]
+}

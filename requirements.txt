@@ -1,0 +1,19 @@
+--find-links https://download.pytorch.org/whl/torch_stable.html
+
+# dependencies
+torch==2.2.2+cu121
+torchmetrics==1.3.2
+torchvision==0.17.2+cu121
+lightning==2.2.1
+tqdm
+numpy
+matplotlib
+transformers
+diffusers
+wandb
+scipy
+pycocotools
+dynaconf
+
+# due to development constraints, the we installed a local version of vot-toolikt with `pip install -e .`
+# vot-toolkit
