@@ -19,9 +19,9 @@ Splits proposed in the paper
 
 | Split      | # polyps | # vids | # vids with ≥ 2 polyps | # vids per cohort | download link |
 |------------|----------|--------|------------------------|-------------------|---------------|
-| train      | 86       | 32     | 19                     | 6/7/8/6           | [download](data/split/instances_train.json) | 
-| validation | 22       | 10     | 5                      | 2/2/3/3           | [download](data/split/instances_val.json) |
-| test       | 24       | 9      | 5                      | 1/2/3/3           | [download](data/split/instances_test.json) |
+| train      | 86       | 32     | 19                     | 6/7/8/6           | [download](https://drive.google.com/file/d/13fqV07sQ1d_bWAfDgyMCLoBYiY5UuGIE/view?usp=sharing) | 
+| validation | 22       | 10     | 5                      | 2/2/3/3           | [download](https://drive.google.com/file/d/1w3YGOxiO5lVvpZ4vSvlI0evTAhr9vjbi/view?usp=sharing) |
+| test       | 24       | 9      | 5                      | 1/2/3/3           | [download](https://drive.google.com/file/d/1R8k6Z7Y0D3rbsUiPmtf1gIbaN_I6E1Sx/view?usp=sharing) |
 
 ## Install
 
