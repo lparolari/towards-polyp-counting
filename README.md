@@ -12,10 +12,10 @@ Luca Parolari, Andrea Cherubini, Lamberto Ballan, Carlo Biffi
 
 ## Data
 
-We experiment on the open-access REAL-Colon dataset. It provides full-procedure videos and it can be downloaded for free on Figshare: https://plus.figshare.com/articles/media/REAL-colon_dataset/22202866.
-(Please refer to this paper for more information: [REAL-Colon: A dataset for developing real-world AI applications in colonoscopy](https://www.nature.com/articles/s41597-024-03359-0)).
+We experiment on the open-access REAL-Colon dataset [[paper](https://www.nature.com/articles/s41597-024-03359-0)]. It provides full-procedure videos and it can be downloaded for free on [Figshare](https://plus.figshare.com/articles/media/REAL-colon_dataset/22202866).
+Alternatively, you may want to use [python scripts](https://github.com/cosmoimd/real-colon-dataset) to automatically download and setup the dataset.
 
-Splits proposed in the paper
+**Our splits**
 
 | Split      | # polyps | # vids | # vids with ≥ 2 polyps | # vids per cohort | download link |
 |------------|----------|--------|------------------------|-------------------|---------------|
